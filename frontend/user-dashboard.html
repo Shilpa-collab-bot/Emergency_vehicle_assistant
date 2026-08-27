@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>EVA - User Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="css/dashboard.css"
+    >
+</head>
+
+<body>
+
+    <!-- ==========================================
+         NAVBAR
+         ========================================== -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🚗 EVA
+        </div>
+
+        <div class="user-info">
+
+            <span id="welcomeUser">
+                Welcome
+            </span>
+
+            <button onclick="window.location.href='profile.html'" class="logout-btn">
+                Profile
+            </button>
+
+            <button onclick="window.location.href='request-status.html'" class="logout-btn">
+                Request Status
+            </button>
+
+            <button
+                onclick="logout()"
+                class="logout-btn"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+         ========================================== -->
+
+    <main class="dashboard-container">
+
+        <!-- Welcome Section -->
+
+        <section class="welcome-section">
+
+            <h1>
+                Emergency Vehicle Assistant
+            </h1>
+
+            <p>
+                Need help with your vehicle?
+                Create an emergency request and
+                we'll find a nearby mechanic.
+            </p>
+
+        </section>
+
+
+        <!-- ======================================
+             CREATE REQUEST CARD
+             ====================================== -->
+
+        <section class="request-card">
+
+            <h2>
+                🚨 Request Emergency Assistance
+            </h2>
+
+            <form id="requestForm">
+
+
+                <!-- Vehicle Type -->
+
+                <div class="form-group">
+
+                    <label for="vehicleType">
+                        Vehicle Type
+                    </label>
+
+                    <select
+                        id="vehicleType"
+                        required
+                    >
+
+                        <option value="">
+                            Select Vehicle
+                        </option>
+
+                        <option value="Bike">
+                            Bike
+                        </option>
+
+                        <option value="Car">
+                            Car
+                        </option>
+
+                        <option value="Auto">
+                            Auto
+                        </option>
+
+                        <option value="Truck">
+                            Truck
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Vehicle Number -->
+
+                <div class="form-group">
+
+                    <label for="vehicleNumber">
+                        Vehicle Number
+                    </label>
+
+                    <input
+                        type="text"
+                        id="vehicleNumber"
+                        placeholder="Example: AP01AB1234"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Issue Type -->
+
+                <div class="form-group">
+
+                    <label for="issueType">
+                        Issue Type
+                    </label>
+
+                    <select
+                        id="issueType"
+                        required
+                    >
+
+                        <option value="">
+                            Select Issue
+                        </option>
+
+                        <option value="Breakdown">
+                            Breakdown
+                        </option>
+
+                        <option value="Engine Problem">
+                            Engine Problem
+                        </option>
+
+                        <option value="Tyre Problem">
+                            Tyre Problem
+                        </option>
+
+                        <option value="Battery Problem">
+                            Battery Problem
+                        </option>
+
+                        <option value="Fuel Problem">
+                            Fuel Problem
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Issue Description -->
+
+                <div class="form-group">
+
+                    <label for="issueDescription">
+                        Describe the Problem
+                    </label>
+
+                    <textarea
+                        id="issueDescription"
+                        rows="4"
+                        placeholder="Describe what happened..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- ==================================
+                     LOCATION
+                     ================================== -->
+
+                <div class="location-section">
+
+                    <h3>
+                        📍 Current Location
+                    </h3>
+
+                    <p id="locationStatus">
+                        Location not detected
+                    </p>
+
+                    <div class="location-values">
+
+                        <div>
+                            <label>
+                                Latitude
+                            </label>
+
+                            <input
+                                type="text"
+                                id="latitude"
+                                readonly
+                            >
+                        </div>
+
+                        <div>
+                            <label>
+                                Longitude
+                            </label>
+
+                            <input
+                                type="text"
+                                id="longitude"
+                                readonly
+                            >
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        id="locationButton"
+                        class="location-btn"
+                    >
+                        📍 Get My Location
+                    </button>
+
+                </div>
+
+
+                <!-- ==================================
+                     SUBMIT
+                     ================================== -->
+
+                <button
+                    type="submit"
+                    id="requestButton"
+                    class="request-btn"
+                >
+                    🚨 Find Nearby Mechanic
+                </button>
+
+            </form>
+
+
+            <!-- Response Message -->
+
+            <div
+                id="requestMessage"
+                class="message"
+            ></div>
+
+        </section>
+
+
+        <section class="request-history-card">
+
+            <div class="request-history-header">
+                <h2>My Requests</h2>
+                <button type="button" id="refreshRequestsButton">Refresh</button>
+            </div>
+
+            <p id="requestHistoryMessage">Loading your requests...</p>
+            <div id="myRequestsList"></div>
+
+        </section>
+
+
+        <!-- ======================================
+             REQUEST RESULT
+             ====================================== -->
+
+        <section
+            id="requestResult"
+            class="result-card"
+            style="display: none;"
+        >
+
+            <h2>
+                ✅ Request Created
+            </h2>
+
+            <div id="mechanicResult">
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
+
+    <script src="js/api.js"></script>
+
+    <script src="js/user-dashboard.js"></script>
+
+</body>
+
+</html>
+```

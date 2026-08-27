@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adify</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Adi<span>Fy</span></div>
+        <div class="nav-title">Online Service</div>
+    </nav>
+
+    <section class="login-section" id="loginSection">
+        <div class="login-card">
+            <h2>Welcome</h2>
+            <p class="subtitle">Login for service</p>
+            <div class="input-group">
+                <label for="loginusername">Username</label>
+                <input type="text" id="loginusername" placeholder="Enter Username">
+            </div>
+            <div class="input-group">
+                <label for="loginpassword">Password</label>
+                <input type="password" id="loginpassword" placeholder="Enter Password">
+            </div>
+            <button type="button" class="main-button" onclick="loginUser()"> Login</button>
+            <p id="loginMessage" class="message"></p>
+            <div class="register-link">
+                Don't have an account?
+                <button type="button" onclick="showRegister()">Register Now</button>
+            </div>
+
+        </div>
+    </section>
+    
+    <!-- =====================================================
+         REGISTER SECTION
+         ===================================================== -->
+
+    <section
+        id="registerSection"
+        class="register-section"
+        style="display: none;">
+
+        <div class="register-card">
+
+            <h2>Create Account</h2>
+
+            <p class="subtitle">
+                Register to start shopping
+            </p>
+
+
+            <!-- NAME -->
+
+            <div class="input-group">
+
+                <label for="regName">
+                    Name
+                </label>
+
+                <input
+                    type="text"
+                    id="regName"
+                    placeholder="Enter your name">
+
+            </div>
+
+
+            <!-- PHONE -->
+
+            <div class="input-group">
+
+                <label for="phno">
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="phno"
+                    placeholder="Enter your phone number">
+
+            </div>
+
+
+            <!-- GENDER -->
+
+            <div class="input-group">
+
+                <label for="gender">
+                    Gender
+                </label>
+
+                <input
+                    type="text"
+                    id="gender"
+                    placeholder="Enter your gender">
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="input-group">
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email">
+
+            </div>
+
+
+            <!-- USERNAME -->
+
+            <div class="input-group">
+
+                <label for="regUsername">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="regUsername"
+                    placeholder="Create username">
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="input-group">
+
+                <label for="regPassword">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="regPassword"
+                    placeholder="Create password">
+
+            </div>
+
+
+            <!-- REGISTER BUTTON -->
+
+            <button
+                type="button"
+                class="register-button"
+                onclick="registerUser()">
+
+                Create Account
+
+            </button>
+
+
+            <!-- REGISTER MESSAGE -->
+
+            <p
+                id="registerMessage"
+                class="message">
+            </p>
+
+
+            <!-- BACK TO LOGIN -->
+
+            <div class="register-link">
+
+                Already have an account?
+
+                <button
+                    type="button"
+                    onclick="showLogin()">
+
+                    Login
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+ 
+    <!-- =====================================================
+         SHOP SECTION
+         ===================================================== -->
+
+    <section
+        id="shopSection"
+        class="shop-section"
+        style="display: none;">
+
+        <!-- SHOP NAVBAR -->
+
+        <div class="shop-navbar">
+
+            <div class="logo">
+                🛍️ ShopEasy
+            </div>
+
+            <div class="nav-buttons">
+
+                <button
+                    type="button"
+                    onclick="showShop()">
+
+                    🏠 Shop
+
+                </button>
+
+                <button
+                    type="button"
+                    onclick="openCart()">
+
+                    🛒 Cart
+
+                </button>
+
+                <button
+                    type="button"
+                    onclick="openProfile()">
+
+                    👤 Profile
+
+                </button>
+
+                <button
+                    type="button"
+                    onclick="logout()">
+
+                    🚪 Logout
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- WELCOME -->
+
+        <div class="welcome">
+
+            <h1>
+                Login Successful 🎉
+            </h1>
+
+            <p>
+                Welcome to ShopEasy.
+                Search for a product below.
+            </p>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchProduct"
+                placeholder="Search for a product...">
+
+            <button
+                type="button"
+                onclick="searchProduct()">
+
+                🔍 Search
+
+            </button>
+
+        </div>
+
+
+        <!-- SEARCH RESULT -->
+
+        <div id="result"></div>
+
+
+        <!-- PRODUCTS -->
+
+        <div id="products"></div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CART SECTION
+         ===================================================== -->
+
+    <section
+    id="cartSection"
+    class="cart-section"
+    style="display: none;">
+
+    <div class="shop-navbar">
+
+        <div class="logo">
+            🛍️ ShopEasy
+        </div>
+
+        <div class="nav-buttons">
+
+            <button onclick="showShop()">
+                🏠 Shop
+            </button>
+
+            <button onclick="openCart()">
+                🛒 Cart
+            </button>
+
+            <button onclick="openProfile()">
+                👤 Profile
+            </button>
+
+            <button onclick="logout()">
+                🚪 Logout
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="cart-container">
+
+        <h1>🛒 My Cart</h1>
+
+        <div id="cartProducts"></div>
+
+        <!-- PAYMENT BUTTON -->
+
+        <button
+            id="proceedPayBtn"
+            class="proceed-pay-button"
+            onclick="proceedToPay()">
+
+            
+
+        </button>
+
+    </div>
+
+</section>
+<section
+    id="invoiceSection"
+    class="invoice-section"
+    style="display: none;">
+
+    <div class="invoice-container">
+
+        <h1>🧾 TAX INVOICE</h1>
+
+        <hr>
+
+        <div class="invoice-header">
+
+            <div>
+                <h2>ShopEasy By Niranjan</h2>
+
+                <p>
+                    Online Shopping
+                </p>
+            </div>
+
+            <div>
+                <p>
+                    <strong>Invoice No:</strong>
+                    <span id="invoiceNumber"></span>
+                </p>
+
+                <p>
+                    <strong>Date:</strong>
+                    <span id="invoiceDate"></span>
+                </p>
+            </div>
+
+        </div>
+
+
+        <hr>
+
+
+        <!-- CUSTOMER DETAILS -->
+
+        <h3>Customer Details</h3>
+
+        <p>
+            <strong>Name:</strong>
+            <span id="invoiceCustomerName"></span>
+        </p>
+
+        <p>
+            <strong>Username:</strong>
+            <span id="invoiceUsername"></span>
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+            <span id="invoiceEmail"></span>
+        </p>
+
+        <p>
+            <strong>Phone:</strong>
+            <span id="invoicePhone"></span>
+        </p>
+
+
+        <hr>
+
+
+        <!-- PRODUCT DETAILS -->
+
+        <h3>Product Details</h3>
+
+        <table class="invoice-table">
+
+            <thead>
+
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="invoiceItems">
+
+            </tbody>
+
+        </table>
+
+
+        <hr>
+
+
+        <!-- AMOUNT -->
+
+        <div class="invoice-total">
+
+            <p>
+                Amount Before GST:
+                ₹<span id="invoiceSubtotal">0</span>
+            </p>
+
+            <p>
+                GST:
+                ₹<span id="invoiceGST">0</span>
+            </p>
+
+            <h2>
+                Total Paid:
+                ₹<span id="invoiceTotal">0</span>
+            </h2>
+
+        </div>
+
+
+        <hr>
+
+
+        <div class="payment-success">
+
+            <h2>
+                ✅ Payment Successful
+            </h2>
+
+            <p>
+                Thank you for shopping with ShopEasy!
+            </p>
+
+        </div>
+
+
+        <button
+            class="print-button"
+            onclick="window.print()">
+
+            🖨️ Print Invoice
+
+        </button>
+
+
+        <button
+            class="continue-button"
+            onclick="showShop()">
+
+            🛍️ Continue Shopping
+
+        </button>
+
+    </div>
+
+</section>
+
+    <!-- =====================================================
+         PROFILE SECTION
+         ===================================================== -->
+
+    <section
+        id="profileSection"
+        class="profile-section"
+        style="display: none;">
+
+        <!-- PROFILE NAVBAR -->
+
+        <div class="shop-navbar">
+
+            <div class="logo">
+                🛍️ ShopEasy
+            </div>
+
+            <div class="nav-buttons">
+
+                <button
+                    type="button"
+                    onclick="showShop()">
+
+                    🏠 Shop
+
+                </button>
+
+                <button
+                    type="button"
+                    onclick="openCart()">
+
+                    🛒 Cart
+
+                </button>
+
+                <button
+                    type="button"
+                    onclick="openProfile()">
+
+                    👤 Profile
+
+                </button>
+
+                <button
+                    type="button"
+                    onclick="logout()">
+
+                    🚪 Logout
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROFILE CONTENT -->
+
+        <div class="profile-container">
+
+            <h1>
+                👤 My Profile
+            </h1>
+
+
+            <div class="profile-card">
+
+                <h2 id="profileName"></h2>
+
+
+                <p>
+                    <strong>Username:</strong>
+
+                    <span id="profileUsername"></span>
+                </p>
+
+
+                <p>
+                    <strong>Email:</strong>
+
+                    <span id="profileEmail"></span>
+                </p>
+
+
+                <p>
+                    <strong>Phone:</strong>
+
+                    <span id="profilePhone"></span>
+                </p>
+
+
+                <p>
+                    <strong>Gender:</strong>
+
+                    <span id="profileGender"></span>
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script src="script1.js"></script>
+</body>
+
+</html>

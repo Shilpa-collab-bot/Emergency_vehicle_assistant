@@ -1,0 +1,71 @@
+
+<!-- .\project\Scripts\python.exe -c "import sqlite3; from backend.main1 import hash_password; c=sqlite3.connect('emergency_db.db'); c.execute('UPDATE users SET password=? WHERE email=?', (hash_password('Admin@12345'), 'shilpa.r.0166@gmail.com')); c.commit(); print('Password reset successfully')" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EVA - Login</title>
+
+    <link rel="stylesheet" href="css/style2.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="login-card">
+
+            <h1>EVA</h1>
+            <p class="subtitle">Emergency Vehicle Assistant</p>
+
+            <h2>Login</h2>
+
+            <form id="loginForm">
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" id="loginButton">
+                    Login
+                </button>
+
+            </form>
+
+            <p id="message"></p>
+
+            <div class="register-link">
+                Don't have an account?
+                <a href="register1.html">Register</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+
+</body>
+</html>
+

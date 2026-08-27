@@ -1,0 +1,654 @@
+
+/* ==========================================
+   EVA - MECHANIC DASHBOARD
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #222;
+    min-height: 100vh;
+}
+
+/* ==========================================
+   NAVBAR
+   ========================================== */
+
+.navbar {
+    min-height: 70px;
+
+    background: #1976d2;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 35px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.mechanic-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#welcomeMechanic {
+    font-size: 15px;
+}
+
+/* ==========================================
+   LOGOUT
+   ========================================== */
+
+.logout-btn {
+    border: none;
+
+    background: white;
+    color: #1976d2;
+
+    padding: 9px 17px;
+
+    border-radius: 7px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background: #eeeeee;
+}
+
+/* ==========================================
+   MAIN CONTAINER
+   ========================================== */
+
+.dashboard-container {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 35px 20px;
+}
+
+/* ==========================================
+   DASHBOARD HEADER
+   ========================================== */
+
+.dashboard-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+.dashboard-header h1 {
+    font-size: 30px;
+
+    margin-bottom: 7px;
+}
+
+.dashboard-header p {
+    color: #666;
+}
+
+/* ==========================================
+   REFRESH BUTTON
+   ========================================== */
+
+.refresh-btn {
+    border: none;
+
+    background: #455a64;
+    color: white;
+
+    padding: 11px 18px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.refresh-btn:hover {
+    background: #37474f;
+}
+
+/* ==========================================
+   AVAILABILITY
+   ========================================== */
+
+.status-card {
+    background: white;
+
+    padding: 20px 25px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+.status-card h3 {
+    margin-bottom: 6px;
+}
+
+#availabilityText {
+    color: #666;
+    font-size: 14px;
+}
+
+.availability-btn {
+    border: none;
+
+    padding: 11px 20px;
+
+    border-radius: 8px;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    background: #2e7d32;
+}
+
+.availability-btn.unavailable {
+    background: #757575;
+}
+
+.availability-btn:hover {
+    opacity: 0.9;
+}
+
+/* ==========================================
+   MESSAGE
+   ========================================== */
+
+.message {
+    min-height: 20px;
+
+    text-align: center;
+
+    margin-bottom: 20px;
+
+    font-size: 14px;
+}
+
+/* ==========================================
+   REQUEST SECTION
+   ========================================== */
+
+.requests-section {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 14px;
+
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
+}
+
+.section-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+
+    border-bottom: 1px solid #eeeeee;
+
+    padding-bottom: 15px;
+}
+
+.section-header h2 {
+    color: #1976d2;
+
+    font-size: 22px;
+}
+
+#requestCount {
+    color: #666;
+
+    font-size: 14px;
+}
+
+/* ==========================================
+   LOADING
+   ========================================== */
+
+.loading {
+    text-align: center;
+
+    padding: 40px;
+
+    color: #666;
+}
+
+/* ==========================================
+   EMPTY STATE
+   ========================================== */
+
+.empty-state {
+    text-align: center;
+
+    padding: 50px 20px;
+
+    color: #666;
+}
+
+.empty-icon {
+    font-size: 45px;
+
+    margin-bottom: 15px;
+}
+
+.empty-state h3 {
+    color: #333;
+
+    margin-bottom: 8px;
+}
+
+/* ==========================================
+   REQUEST LIST
+   ========================================== */
+
+.requests-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+/* ==========================================
+   REQUEST CARD
+   ========================================== */
+
+.request-card {
+    border: 1px solid #e0e5eb;
+
+    border-left: 5px solid #1976d2;
+
+    border-radius: 10px;
+
+    padding: 20px;
+
+    background: #fafbfd;
+}
+
+.request-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================
+   REQUEST HEADER
+   ========================================== */
+
+.request-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 15px;
+}
+
+.request-header h3 {
+    font-size: 19px;
+
+    color: #222;
+}
+
+/* ==========================================
+   STATUS BADGE
+   ========================================== */
+
+.status-badge {
+    display: inline-block;
+
+    padding: 6px 11px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+}
+
+/* Pending */
+
+.status-pending {
+    background: #fff3cd;
+
+    color: #856404;
+}
+
+/* Accepted */
+
+.status-accepted {
+    background: #dbeafe;
+
+    color: #1d4ed8;
+}
+
+/* In Progress */
+
+.status-in_progress {
+    background: #e0f2fe;
+
+    color: #0369a1;
+}
+
+/* Completed */
+
+.status-completed {
+    background: #dcfce7;
+
+    color: #166534;
+}
+
+/* Rejected */
+
+.status-rejected {
+    background: #fee2e2;
+
+    color: #991b1b;
+}
+
+/* ==========================================
+   REQUEST DETAILS
+   ========================================== */
+
+.request-details {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px 20px;
+
+    margin-bottom: 18px;
+}
+
+.detail {
+    font-size: 14px;
+
+    color: #555;
+}
+
+.detail strong {
+    color: #333;
+}
+
+/* ==========================================
+   DESCRIPTION
+   ========================================== */
+
+.request-description {
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 8px;
+
+    padding: 12px;
+
+    margin-bottom: 18px;
+}
+
+.request-description strong {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #333;
+}
+
+.request-description p {
+    color: #666;
+
+    line-height: 1.5;
+}
+
+.customer-feedback {
+    margin-top: 14px;
+    padding: 12px;
+    border-left: 4px solid #1976d2;
+    background: #f1f7ff;
+    color: #263238;
+}
+
+.customer-feedback span {
+    margin-left: 8px;
+    font-weight: bold;
+    color: #1976d2;
+}
+
+.customer-feedback p {
+    margin-top: 6px;
+}
+
+/* ==========================================
+   LOCATION
+   ========================================== */
+
+.location-info {
+    margin-bottom: 18px;
+
+    color: #555;
+
+    font-size: 14px;
+}
+
+.location-info a {
+    color: #1976d2;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+.location-info a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================
+   ACTION BUTTONS
+   ========================================== */
+
+.request-actions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.request-actions button {
+    border: none;
+
+    padding: 10px 16px;
+
+    border-radius: 7px;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.accept-btn {
+    background: #1976d2;
+}
+
+.accept-btn:hover {
+    background: #125ca5;
+}
+
+.reject-btn {
+    background: #e53935;
+}
+
+.reject-btn:hover {
+    background: #c62828;
+}
+
+.complete-btn {
+    background: #2e7d32;
+}
+
+.complete-btn:hover {
+    background: #1b5e20;
+}
+
+.request-actions button:disabled {
+    background: #999;
+
+    cursor: not-allowed;
+}
+
+/* ==========================================
+   HISTORY
+   ========================================== */
+
+.history-section {
+    margin-top: 25px;
+
+    text-align: center;
+}
+
+.history-btn {
+    border: none;
+
+    padding: 13px 25px;
+
+    border-radius: 8px;
+
+    background: #455a64;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.history-btn:hover {
+    background: #37474f;
+}
+
+/* ==========================================
+   MOBILE
+   ========================================== */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 15px 18px;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .mechanic-info {
+        width: 100%;
+
+        justify-content: space-between;
+    }
+
+    .dashboard-container {
+        padding: 25px 12px;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .refresh-btn {
+        width: 100%;
+    }
+
+    .status-card {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .availability-btn {
+        width: 100%;
+    }
+
+    .requests-section {
+        padding: 18px 14px;
+    }
+
+    .section-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 8px;
+    }
+
+    .request-details {
+        grid-template-columns: 1fr;
+    }
+
+    .request-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .request-actions {
+        flex-direction: column;
+    }
+
+    .request-actions button {
+        width: 100%;
+    }
+}

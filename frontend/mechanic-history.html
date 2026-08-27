@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>EVA - Job History</title>
+	<link rel="stylesheet" href="css/mechanic-dashboard.css">
+</head>
+<body>
+	<header class="navbar">
+		<div class="logo">🔧 EVA Mechanic</div>
+		<div class="mechanic-info">
+			<span id="welcomeMechanic">Job History</span>
+			<button id="backButton" class="logout-btn">Dashboard</button>
+		</div>
+	</header>
+
+	<main class="dashboard-container">
+		<section class="dashboard-header">
+			<div>
+				<h1>Job History</h1>
+				<p>Review your assigned emergency service requests.</p>
+			</div>
+			<button id="refreshHistoryButton" class="refresh-btn">🔄 Refresh</button>
+		</section>
+
+		<div id="historyMessage" class="message">Loading job history...</div>
+		<section id="historyList" class="requests-list"></section>
+	</main>
+
+	<script src="js/api.js"></script>
+	<script src="js/mechanic-history.js"></script>
+</body>
+</html>

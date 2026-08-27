@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>EVA - Mechanic Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="css/mechanic-dashboard.css"
+    >
+</head>
+
+<body>
+
+    <!-- ==========================================
+         NAVBAR
+         ========================================== -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🔧 EVA Mechanic
+        </div>
+
+        <div class="mechanic-info">
+
+            <span id="welcomeMechanic">
+                Welcome
+            </span>
+
+            <button onclick="window.location.href='profile.html'" class="logout-btn">
+                Profile
+            </button>
+
+            <button
+                id="logoutButton"
+                class="logout-btn"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         MAIN
+         ========================================== -->
+
+    <main class="dashboard-container">
+
+        <!-- ======================================
+             DASHBOARD HEADER
+             ====================================== -->
+
+        <section class="dashboard-header">
+
+            <div>
+
+                <h1>
+                    Mechanic Dashboard
+                </h1>
+
+                <p>
+                    Manage your emergency service requests.
+                </p>
+
+            </div>
+
+            <button
+                id="refreshButton"
+                class="refresh-btn"
+            >
+                🔄 Refresh
+            </button>
+
+        </section>
+
+
+        <!-- ======================================
+             STATUS
+             ====================================== -->
+
+        <section class="status-card">
+
+            <div>
+
+                <h3>
+                    Availability
+                </h3>
+
+                <p id="availabilityText">
+                    Checking status...
+                </p>
+
+            </div>
+
+            <button
+                id="availabilityButton"
+                class="availability-btn"
+            >
+                Loading...
+            </button>
+
+        </section>
+
+
+        <!-- ======================================
+             MESSAGE
+             ====================================== -->
+
+        <div
+            id="dashboardMessage"
+            class="message"
+        ></div>
+
+
+        <!-- ======================================
+             REQUESTS
+             ====================================== -->
+
+        <section class="requests-section">
+
+            <div class="section-header">
+
+                <h2>
+                    🚨 Emergency Requests
+                </h2>
+
+                <span id="requestCount">
+                    0 Requests
+                </span>
+
+            </div>
+
+
+            <!-- Loading -->
+
+            <div
+                id="loading"
+                class="loading"
+            >
+                Loading requests...
+            </div>
+
+
+            <!-- Empty -->
+
+            <div
+                id="noRequests"
+                class="empty-state"
+                style="display: none;"
+            >
+
+                <div class="empty-icon">
+                    📭
+                </div>
+
+                <h3>
+                    No Requests Found
+                </h3>
+
+                <p>
+                    You currently have no emergency service requests.
+                </p>
+
+            </div>
+
+
+            <!-- Request List -->
+
+            <div
+                id="requestsList"
+                class="requests-list"
+            >
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             HISTORY BUTTON
+             ====================================== -->
+
+        <section class="history-section">
+
+            <button
+                id="historyButton"
+                class="history-btn"
+            >
+                📋 View Job History
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
+
+    <script src="js/api.js"></script>
+
+    <script src="js/mechanic-dashboard.js"></script>
+
+</body>
+
+</html>

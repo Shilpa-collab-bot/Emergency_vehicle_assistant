@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVA - Admin Dashboard</title>
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+</head>
+<body>
+    <header class="admin-header">
+        <div><strong>EVA</strong><span>Admin Dashboard</span></div>
+        <button id="logoutButton">Logout</button>
+    </header>
+    <main class="admin-container">
+        <section class="admin-title">
+            <div>
+                <p class="eyebrow">Operations overview</p>
+                <h1>Emergency requests</h1>
+            </div>
+            <button id="refreshButton">Refresh</button>
+        </section>
+        <div id="message" class="message">Loading requests...</div>
+        <nav class="admin-tabs" aria-label="Admin data views">
+            <button class="tab-button active" data-view="requestsView">Requests</button>
+            <button class="tab-button" data-view="usersView">Users</button>
+            <button class="tab-button" data-view="mechanicsView">Mechanics</button>
+            <button class="tab-button" data-view="adminsView">Admins</button>
+        </nav>
+        <section id="usersView" class="admin-view">
+            <div class="section-heading"><h2>All Users</h2><span id="usersCount">0 users</span></div>
+            <div id="usersList" class="data-list"></div>
+        </section>
+        <section id="mechanicsView" class="admin-view">
+            <div class="section-heading"><h2>All Mechanics</h2><span id="mechanicsCount">0 mechanics</span></div>
+            <div id="mechanicsList" class="data-list"></div>
+        </section>
+        <section id="adminsView" class="admin-view">
+            <div class="section-heading"><h2>All Admins</h2><span id="adminsCount">0 admins</span></div>
+            <div id="adminsList" class="data-list"></div>
+        </section>
+        <section id="requestsView" class="admin-view active-view">
+        <section class="summary-grid">
+            <div><span>Total</span><strong id="totalCount">0</strong></div>
+            <div><span>Pending</span><strong id="pendingCount">0</strong></div>
+            <div><span>Active</span><strong id="activeCount">0</strong></div>
+            <div><span>Completed</span><strong id="completedCount">0</strong></div>
+        </section>
+        <section id="requestList" class="request-list"></section>
+        </section>
+    </main>
+    <script src="js/api.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>
