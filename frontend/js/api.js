@@ -4,7 +4,7 @@
 
 // FastAPI backend URL
 // const API_BASE_URL = "http://127.0.0.1:8000";
-const API_URL = "https://eva-backend.onrender.com";
+const API_URL = "https://emergency-vehicle-assistant-6.onrender.com";
 // ==========================================
 // GET SAVED TOKEN
 // ==========================================
