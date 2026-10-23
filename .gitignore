@@ -4,3 +4,4 @@ __pycache__
 *.db
 *.bak
 .venv/
+__pycache__/
